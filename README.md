@@ -46,4 +46,5 @@ folder to your mikrotik device(via ftp) and write ./bins/mtdblock2-OWL.bin to it
 If you just need to fix the UART work on RouterBOOT:
 
 	Get the /dev/mtd2 dump from your Mikrotik device (RB5009)
-	./uart_fixer.sh nc
+	./get_from_mtd.sh
+	./patch_rbt.sh nc

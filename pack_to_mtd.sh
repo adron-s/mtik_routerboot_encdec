@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 #for pack res-xxx-MODI.fwf back -> mtdblock2.bin
 
@@ -28,8 +28,10 @@ echo ""
 echo "Now do the following on Your Mikrotik device:"
 echo ""
 echo "cd /flash/rw/disk/pub/static-bins/"
-echo "./mtd erase RouterBoot && nc 172.20.1.77 1111 | ./mtd write - RouterBoot"
+echo "nc 172.20.1.77 1111 | ./mtd write - RouterBoot"
 echo ""
+echo "sh /flash/rw/disk/pub/static-bins/lets-try.sh" | \
+	xclip -selection clipboard
 #echo "cat ${RESULT} | nc -l -p 1111 -q 1"
 #echo ""
 

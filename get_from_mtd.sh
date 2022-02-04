@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 #extract RouterBOOT from mtdblock2.bin and decode it from UCL NRV2B
 

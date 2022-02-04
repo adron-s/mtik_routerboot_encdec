@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 ROUTERBOOT_OFFSET=0xb0000
 
@@ -17,7 +17,10 @@ read_uint() {
 	echo $((0x$SIZE))
 }
 
-[ "${BASH}" = "/bin/bash" ] || {
-	echo "Please use only /bin/bash for this script !!!"
-	exit 1
+binay_patch() {
+	local offset="${1}"
+	local data="${2}"
+	local target="${3:-$TARGET}"
+	offset=$((offset))
+	echo "$data" | xxd -r -p | dd of=$target bs=1 seek=${offset} conv=notrunc
 }

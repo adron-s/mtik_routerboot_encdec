@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 #for pack decoded(ARMv8 bytecode) RouterBOOT to its
 #original format - fwf (header + UCL NRV2B + CRC32)
@@ -9,12 +9,15 @@ rm -Rf ./bins/tmp
 mkdir ./bins/tmp
 
 #TARGET=./bins/routerboot-7.2rc1.dec
-TARGET=./bins/rbt-7.2rc1-MTD.dec
+TARGET=${1:-./bins/rbt-7.2rc1-MTD.dec}
 #RESULT=./bins/res-7.2rc1-MODI.fwf
 RESULT=./bins/res-7.2rc1-MTD.bin
 
 HEAD=./bins/head.enc
 ENC_TMP=./bins/tmp/rbt-MODI.enc
+
+echo "TARGET is ${TARGET}"
+echo ""
 
 rm -f $RESULT
 [ -f $HEAD ] && cat $HEAD > $RESULT
@@ -38,10 +41,10 @@ cat ${ENC_TMP} >> ${ENC_TMP}.2
 cat ${ENC_TMP}.2 >> $RESULT
 CRC32=$(crc32 ${ENC_TMP}.2)
 rm ${ENC_TMP}.2
-rm ${ENC_TMP}
+#rm ${ENC_TMP}
 tobi $CRC32 >> $RESULT
 
 #for check: md5sum ./bins/$RESULT ./bins/70x0-7.2rc1.fwf
-echo ""
-echo "The result file is $RESULT"
-echo ""
+#echo ""
+#echo "The result file is $RESULT"
+#echo ""
