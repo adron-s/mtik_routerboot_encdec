@@ -1,6 +1,7 @@
 #!/bin/sh
 
 ROUTERBOOT_OFFSET=0xb0000
+ROUTERBOOT_MTD_SIZE=0x10000
 
 tobi() {
 	printf "0: %.8x" $1 | sed -E 's/0: (..)(..)(..)(..)/0: \4\3\2\1/' | xxd -r -g0
